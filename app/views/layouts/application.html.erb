@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecordingSessionScheduler</title>
+    <title>Recording Session Scheduler</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    </head>
+    
+    
+    <%= render 'layouts/messages' %>
+    <!-- Last -->
+    
+    <body>
+      <%= yield %>
+    </body>
+    
+    </html>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
