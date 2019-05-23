@@ -10,7 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_203423) do
+ActiveRecord::Schema.define(version: 2019_05_23_221114) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "engineers", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "email", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recording_sessions", force: :cascade do |t|
+    t.datetime "appointment_date"
+    t.boolean "status", default: false
+    t.integer "duration", default: 30
+    t.integer "studio_id"
+    t.integer "engineer_id"
+    t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_recording_sessions_on_artist_id"
+    t.index ["engineer_id"], name: "index_recording_sessions_on_engineer_id"
+    t.index ["studio_id"], name: "index_recording_sessions_on_studio_id"
+  end
+
+  create_table "studios", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
