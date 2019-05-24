@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     resources :recording_sessions#, :only => [:create, :show]
   end
   resources :engineers do
-    resources :recording_sessions, :only => [:create, :show]
+    resources :recording_sessions#, :only => [:index, :show, :new, :edit]
   end
   resources :artists do
-    resources :recording_sessions, :only => [:create, :show]
+    resources :recording_sessions, :only => [:index, :show, :new, :edit]
   end
   
 
