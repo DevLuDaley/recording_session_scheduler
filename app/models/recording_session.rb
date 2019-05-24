@@ -1,4 +1,4 @@
-class Recording_Session < ApplicationRecord
+class RecordingSession < ApplicationRecord
 
   belongs_to :engineer
   belongs_to :artist
