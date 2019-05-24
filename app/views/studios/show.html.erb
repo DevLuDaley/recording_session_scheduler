@@ -1,4 +1,4 @@
-<!-- USED in views/RecordingSessions/index -->
+<!-- USED in views/Recording_Sessions/index -->
 
 <!-- EDIT FORM -->
 <!-- DISPLAY recording_session.ALL -->
@@ -26,7 +26,7 @@
                 <tbody>
                     <tr>
                         <td><%= link_to c.id, studio_path(c)%></td>
-                        <td><%= link_to c.studio.name.capitalize, studio_path(c) %></a></td>
+                        <td><%= link_to c.name.capitalize, studio_path(c) %></a></td>
                         <td><%= link_to c.location.capitalize, studio_path(c)%></td>
                         </td>
 

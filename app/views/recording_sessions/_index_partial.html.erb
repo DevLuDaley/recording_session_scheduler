@@ -1,4 +1,4 @@
-<!-- USED in views/RecordingSessions/index -->
+<!-- USED in views/Recording_Sessions/index -->
 
 <!-- EDIT FORM -->
 <!-- DISPLAY recording_session.ALL -->
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
 
-            <% Recording_Session.incomplete.order('appointment_date ASC').each do |c| %>
+            <% RecordingSession.incomplete.order('appointment_date ASC').each do |c| %>
             <div class="well">
                 <tbody>
                     <tr>
