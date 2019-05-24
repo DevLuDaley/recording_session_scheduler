@@ -5,17 +5,25 @@ class RecordingSessionsController < ApplicationController
 
 
   def index
+     @recording_sessions = RecordingSession.all
     @engineers = Engineer.all
     @studios = Studio.all
     @artists = Artist.all
+    
+    #binding.pry
     if params[:artist_id]
       @recording_sessions = Artist.find(params[:artist_id]).recording_sessions
+ #     @artist = Artist.find_by(id: params[:artist_id])
+#  if @artist.nil?
+#   redirect_to artists_path, alert: "Artist not found"
+#  else
+#   @recording_sessions = @artist.recording_sessions 
     elsif params[:engineer_id]
       @recording_sessions = Engineer.find(params[:engineer_id]).recording_sessions
     elsif params[:studio_id]
       @recording_sessions = Studio.find(params[:studio_id]).recording_sessions
     else
-      @recording_sessions = RecordingSession.all
+     
    #    redirect_to action: 'index'
          end
   end 
@@ -30,7 +38,7 @@ class RecordingSessionsController < ApplicationController
   end
 
   def new
-    @recording_session = Recording_Session.new
+    @recording_session = RecordingSession.new
     # params.require(:recording_session).permit(:appointment_date, :studio_id, :engineer_id, :artist_id)
     # if artist_id or not -- that
     # if nested_--tind artist build --what is associated
@@ -39,9 +47,9 @@ class RecordingSessionsController < ApplicationController
 
   def create
     # binding.pry
-    @recording_session = Recording_Session.new(recording_session_params)
+    @recording_session = RecordingSession.new(recording_session_params)
     index
-    # @recording_session = Recording_Session.find(params[:id])
+    # @recording_session = RecordingSession.find(params[:id])
     if @recording_session.save
       # raise params.inspect
 #      redirect_to action: 'index' # , notice: 'Recording Session created'
@@ -53,8 +61,23 @@ class RecordingSessionsController < ApplicationController
   end
 
   def edit
-    @recording_session = Recording_Session.find(params[:id])
     index
+    @recording_session = RecordingSession.find(params[:id])
+  if params[:artist_id]
+      @recording_sessions = Artist.find(params[:artist_id]).recording_sessions
+ #     @artist = Artist.find_by(id: params[:artist_id])
+#  if @artist.nil?
+#   redirect_to artists_path, alert: "Artist not found"
+#  else
+#   @recording_sessions = @artist.recording_sessions 
+    elsif params[:engineer_id]
+      @recording_sessions = Engineer.find(params[:engineer_id]).recording_sessions
+    elsif params[:studio_id]
+      @recording_sessions = Studio.find(params[:studio_id]).recording_sessions
+    else
+      @recording_sessions = RecordingSession.all
+   #    redirect_to action: 'index'
+         end
   end
 
   #   def recording_session_param
@@ -69,7 +92,7 @@ class RecordingSessionsController < ApplicationController
   #    redirect_to action: 'show', id: @recording_session
   #  else
 
-  #    @recording_sessions = Recording_Session.all
+  #    @recording_sessions = RecordingSession.all
   #    @engineers = Engineer.all
   #    @engineer = Engineer.find(params[:id])
   #    @studios = Studio.all
@@ -80,7 +103,7 @@ class RecordingSessionsController < ApplicationController
 
   def update
     index
-    @recording_session = Recording_Session.find(params[:id])
+    @recording_session = RecordingSession.find(params[:id])
     # raise params.inspect
     if @recording_session.update(params.require(:recording_session).permit(:appointment_date, :studio_id, :engineer_id, :artist_id))
       # binding.pry
@@ -92,14 +115,14 @@ class RecordingSessionsController < ApplicationController
   end
 
   #   def update
-  #     @recording_session = Recording_Session.find(params[:id])
+  #     @recording_session = RecordingSession.find(params[:id])
   #     #@recording_session.update(params.require(:recording_session).permit(:appointment_date, :studio, :engineer, :artist)
   #     raise params.inspect
   #     if @recording_session.update_attributes(recording_session_param)
   #       redirect_to action: 'show', id: @recording_session
   #     else
 
-  #       @recording_sessions = Recording_Session.all
+  #       @recording_sessions = RecordingSession.all
   #       @engineers = Engineer.all
   #       @engineer = Engineer.find(params[:id])
   #       @studios = Studio.all
