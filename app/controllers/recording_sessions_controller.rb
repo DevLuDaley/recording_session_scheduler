@@ -1,5 +1,7 @@
 class RecordingSessionsController < ApplicationController
-http_basic_authenticate_with name: "lu", password: "password", except: [:index, :show]
+    #before_filter :authenticate_user!
+    before_action :authenticate_user!
+#http_basic_authenticate_with name: "lu", password: "password", except: [:index, :show]
 
 
   def index
@@ -13,7 +15,7 @@ http_basic_authenticate_with name: "lu", password: "password", except: [:index, 
     elsif params[:studio_id]
       @recording_sessions = Studio.find(params[:studio_id]).recording_sessions
     else
-      @recording_sessions = Recording_Session.all
+      @recording_sessions = RecordingSession.all
    #    redirect_to action: 'index'
          end
   end 
@@ -22,7 +24,7 @@ http_basic_authenticate_with name: "lu", password: "password", except: [:index, 
   def show
     index
     # binding.pry
-    @recording_session = Recording_Session.find(params[:id])
+    @recording_session = RecordingSession.find(params[:id])
     #     redirect_to action: 'index'
     
   end
@@ -107,7 +109,7 @@ http_basic_authenticate_with name: "lu", password: "password", except: [:index, 
   #   end
 
   def destroy
-    Recording_Session.find(params[:id]).destroy
+    RecordingSession.find(params[:id]).destroy
     redirect_to action: 'index'
     #redirect_to recording_session_path
   end
