@@ -1,5 +1,6 @@
 class StudiosController < ApplicationController
-  
+    # before_filter :authenticate_user!
+  before_action :authenticate_user!
 
 
 def index
@@ -13,7 +14,7 @@ def index
     elsif params[:studio_id]
       @recording_sessions = Studio.find(params[:studio_id]).recording_sessions
     else
-      @recording_sessions = Recording_Session.all
+      @recording_sessions = RecordingSession.all
    #    redirect_to action: 'index'
  end
  end
