@@ -1,0 +1,53 @@
+<%= form_for @recording_session do |p| %>
+
+<h2>Edit Session</h2>
+<h4>Use the dropdown menus below:</h4>
+<!-- Errors MESSAGING -->
+<%if @recording_session.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(@recording_session.errors.count, "error") %>
+        prohibited this item from being saved:
+        <% @recording_session.errors.full_messages.each do |msg| %>
+    </h2>
+    <ul style="list-style: none;">
+        <li>
+            <div class="alert alert-danger"><%= msg %></div>
+        </li>
+        <% end %>
+        <% end %>
+    </ul>
+
+
+    <!-- EDIT FORM -->
+    <h5>
+        <label>Studio Location:</label><br>
+        <%= select("recording_session", "studio_id", @studios.collect {|p| [ p.name, p.location, p.id] }, {prompt: 'Book Studio'}) %>
+        <br>
+        <br>
+        <label>Session Date:</label><br>
+        <%= select("recording_session", "appointment_date", @recording_sessions.collect {|p| [ p.appointment_date, p.id] }, {prompt: 'Select Date and Time'}) %>
+
+        <br>
+        <br>
+        <label>Recording Engineer:</label><br>
+        <%= select("recording_session", "engineer_id", @engineers.collect {|p| [ p.name, p.id] }, {prompt: 'Assign Engineer'}) %>
+        <br>
+        <br>
+        <label>Recording Artist:</label><br>
+        <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {prompt: 'Select Artist'} ) %>
+        <br>
+        <br>
+
+        <input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date"
+            value="2019-05-21T07:00"></p>
+        Session Date : <%= p.text_field(:appointment_date, {:class => 'form-control'}) %><br />
+        <%= p.submit({:class => 'btn btn-primary'}) %>
+        <% end %>
+        <button> <%= link_to "Delete", recording_session_path(@recording_session), 
+                                     method: :delete, 
+                                     data: {confirm: 'Are you sure you want to delete this session?'},
+                                     :class => 'btn btn-default' %>
+        </button>
+        </h4>
+        <!-- END OF EDIT FORM -->
