@@ -1,0 +1,34 @@
+<body>
+
+    <!-- RECORDING SESSION INFO -->
+    <div>
+        <h2> Scheduled Recording Session </h2>
+
+        Session ID: <%= @recording_session.id %>
+        <br>
+        Session Date: <%= @recording_session.appointment_date.time.to_formatted_s(:rfc822)  %>
+        <br>
+        Engineer: <%= @recording_session.engineer.name %>
+        <br>
+        Studio: <%= @recording_session.studio.name %>
+        <br>
+        Location: <%= @recording_session.studio.location %>
+        <br>
+        Artist: <%= @recording_session.artist.name %>
+        <br>
+        Recording Session Complete? <%= @recording_session.status %>
+        <br>
+        <%= DateTime.parse(@recording_session.appointment_date.to_s).strftime("%I:%M %p") %>
+        <br>
+    </div>
+
+    <div>
+</body>
+
+<button><%= link_to "Edit", edit_recording_session_path(@recording_session), :class => 'btn btn-default' %></button>
+<button><%= link_to "Delete", recording_session_path(@recording_session), 
+                        method: :delete, 
+                        data: {confirm: 'Are you sure you want to delete this session?'} , :class => 'btn btn-default'%>
+</button>
+
+</div>
