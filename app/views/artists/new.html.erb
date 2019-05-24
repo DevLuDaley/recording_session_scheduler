@@ -1,0 +1,34 @@
+<!-- NEW FORM -->
+<%= form_for @artist, url: {action: "create"} do |p| %>
+
+<h2>Create a New Artist</h2>
+<br>
+<%= render 'errors', from: @artist %>
+
+<%= form_for [@artist] do |p| %>
+        <div class="field">
+            <%= p.label :name %><br />
+            <%= p.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <%= p.submit({:class => 'btn btn-primary'}) %>
+        <% end %>
+        <% end %>
+        </h4>
+        <!-- END OF NEW FORM -->
+artist
+        <%= form_for @artist do |f| %>
+        <br />
+        <% if @artist.recording_sessions.present? %>
+        <%= f.fields_for :recording_sessions do |p| %>
+        <% user = p.object.user %>
+        <%= user.name %>
+        Admin?
+        <%= p.check_box :admin %>
+        <br />
+        <% end %>
+        <% else %>
+        No artists in this group yet
+        <% end %>
+        <%= f.submit 'Update group' %>
+        <% end %>
