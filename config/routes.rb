@@ -5,7 +5,17 @@ Rails.application.routes.draw do
  root 'recording_sessions#index'
  
    resources  :studios, :recording_sessions, :engineers, :artists
-
+#resources :photos, :only => [:index, :show]
+  resources :studios do
+    resources :recording_sessions#, :only => [:create, :show]
+  end
+  resources :engineers do
+    resources :recording_sessions, :only => [:create, :show]
+  end
+  resources :artists do
+    resources :recording_sessions, :only => [:create, :show]
+  end
+  
 
 #   devise_scope :users do
 #     get 'login', to: 'devise/sessions#new'
@@ -13,14 +23,5 @@ Rails.application.routes.draw do
 #  devise_scope :users do
 #     get 'logout', to: 'devise/sessions#destroy'
 #   end
-
-
-
-
-
-
-
-
-
 
 end
