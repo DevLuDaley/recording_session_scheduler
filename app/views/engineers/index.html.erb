@@ -34,9 +34,7 @@
                     <tr>
                         <td><%= link_to c.id, recording_session_path(c)%></td>
                         <td><%= link_to c.name.capitalize, engineer_path(c) %></a></td>
-                        <td
-
-                            <%= link_to "Delete", c, method: :delete, data: { confirm: 'Are you sure you want to delete this recording session?' } %>
+                        <td> <%= link_to "Delete", c, method: :delete, data: { confirm: 'Are you sure you want to delete this recording session?' } %>
                         </td>
 
                     </tr>
