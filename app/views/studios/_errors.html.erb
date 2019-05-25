@@ -1,0 +1,15 @@
+
+<%if @studio.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(@studio.errors.count, "error") %>
+        prohibited this item from being saved:
+        <% @studio.errors.full_messages.each do |msg| %>
+    </h2>
+    <ul style="list-style: none;">
+        <li>
+            <div class="alert alert-danger"><%= msg %></div>
+        </li>
+        <% end %>
+    </ul>
+    <%  end %>

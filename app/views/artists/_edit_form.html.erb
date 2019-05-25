@@ -1,0 +1,23 @@
+<h3>
+    <label>Recording Artist:</label><br>
+    <h3>
+        <h5>
+            <%= @artist.name %>
+        </h5>
+        <br>
+        <%=  form_for(@artist) do |p| %>
+        <%= p.label :name %>
+        <%= p.text_field :name %>
+        <%= p.submit({:class => 'btn btn-primary'}) %>
+        <% end %>
+        <br>
+        <br>
+        <br>
+
+        <button>
+            <%= link_to "Delete", recording_session_path(@artist), 
+                                     method: :delete, 
+                                     data: {confirm: 'Are you sure you want to delete this session?'},
+                                     :class => 'btn btn-default' %>
+        </button>
+        </h4>

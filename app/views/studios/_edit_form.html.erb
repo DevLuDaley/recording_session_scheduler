@@ -1,0 +1,25 @@
+<h3>
+    <label>Recording Studios:</label><br>
+    <h3>
+        <h5>
+            <%= @studio.name %>
+        </h5>
+        <br>
+        <%=  form_for(@studio) do |p| %>
+        <%= p.label :name %>
+        <%= p.text_field :name %>
+        <%= p.label :location %>
+        <%= p.text_field :location %>
+        <%= p.submit({:class => 'btn btn-primary'}) %>
+        <% end %>
+        <br>
+        <br>
+        <br>
+
+        <button>
+            <%= link_to "Delete", studio_path(@studio), 
+                                     method: :delete, 
+                                     data: {confirm: 'Are you sure you want to delete this session?'},
+                                     :class => 'btn btn-default' %>
+        </button>
+        </h4>
