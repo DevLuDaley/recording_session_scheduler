@@ -8,39 +8,28 @@ class ArtistsController < ApplicationController
     @engineers = Engineer.all
     @studios = Studio.all
     #@artists = Artist.all
+  end
 
-
+  def new
+    @artist = Artist.new
   end
 
 
-def new
-  @artist = Artist.new
-end
-
-
-def create
-    # binding.pry
-    @artist = Artist.new(artist_params)
-#    @artist = Artist.new(params[:name]
-    #index
-    # @artist = Artist.find(params[:id])
-    if @artist.save
-      # raise params.inspect
-#      redirect_to action: 'index' # , notice: 'Artist created'
-      redirect_to @artist # , notice: 'Artist created'
-    else
-      # @studios = Studio.all
-      render action: 'new'
-    end
+  def create
+      # binding.pry
+      @artist = Artist.new(artist_params)
+  #    @artist = Artist.new(params[:name]
+      #index
+      # @artist = Artist.find(params[:id])
+      if @artist.save
+        # raise params.inspect
+  #      redirect_to action: 'index' # , notice: 'Artist created'
+        redirect_to @artist # , notice: 'Artist created'
+      else
+        # @studios = Studio.all
+        render action: 'new'
+      end
   end
-
-
-
-
-
-
-
-
 
   def edit
     @artist = Artist.find(params[:id])
@@ -71,7 +60,7 @@ def show
     
   end
 
-
+private
   def artist_params
     params.require(:artist).permit(:name)
   end
