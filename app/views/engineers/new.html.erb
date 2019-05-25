@@ -1,0 +1,18 @@
+<!-- NEW FORM -->
+<%= form_for @engineer, url: {action: "create"} do |p| %>
+
+<h2>Create a New Engineer</h2>
+<br>
+<%= render 'errors', from: @engineer %>
+
+<%= form_for [@engineer] do |p| %>
+        <div class="field">
+            <%= p.label :name %><br />
+            <%= p.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <%= p.submit({:class => 'btn btn-primary'}) %>
+        <% end %>
+        <% end %>
+        </h4>
+        <!-- END OF NEW FORM -->

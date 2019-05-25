@@ -1,0 +1,20 @@
+<!-- NEW FORM -->
+<%= form_for @studio, url: {action: "create"} do |p| %>
+
+<h2>Create a New Studio</h2>
+<br>
+<%= render 'errors', from: @studio %>
+
+<%= form_for [@studio] do |p| %>
+<div class="field">
+    <%= p.label :name %><br />
+    <%= p.text_field :name, autofocus: true, autocomplete: "name" %> <br />
+    <%= p.label :location %><br />
+    <%= p.text_field :location, autofocus: true, autocomplete: "location" %> <br />
+</div>
+
+<%= p.submit({:class => 'btn btn-primary'}) %>
+<% end %>
+<% end %>
+</h4>
+<!-- END OF NEW FORM -->
