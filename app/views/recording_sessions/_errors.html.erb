@@ -1,0 +1,14 @@
+<%if @recording_session.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(@recording_session.errors.count, "error") %>
+        prohibited this item from being saved:
+        <% @recording_session.errors.full_messages.each do |msg| %>
+    </h2>
+    <ul style="list-style: none;">
+        <li>
+            <div class="alert alert-danger"><%= msg %></div>
+        </li>
+        <% end %>
+    </ul>
+    <%  end %>

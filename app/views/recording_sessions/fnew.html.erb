@@ -1,0 +1,46 @@
+<!-- NEW FORM -->
+<% render 'errors', form: @recording_session %>
+<%= form_for @recording_session, url: {action: "create"} do |p| %>
+<h2>Create a New Session</h2>
+<h4>Use the dropdown menus below:</h4>
+    <h5>
+        <%= select("recording_session", "studio_id", @studios.collect {|p| [ p.name, p.id] }, {prompt: 'Book Studio'}) %>
+        <br>
+        <br>
+        <%= select("recording_session", "appointment_date", @recording_sessions.collect {|p| [ p.appointment_date] }, {prompt: 'Select Date and Time'}) %>
+
+        <br>
+        <br>
+        <%= select("recording_session", "engineer_id", @engineers.collect {|p| [ p.name, p.id] }, {prompt: 'Assign Engineer'}) %>
+        <br>
+        <br>
+        <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {prompt: 'Select Artist'}) %>
+
+        <br>
+        <br>
+
+        <%= p.submit({:class => 'btn btn-primary'}) %>
+    
+        </h4>
+
+
+        <!-- END OF NEW FORM -->
+
+
+
+
+<%= recording_session_builder.fields_for :artists do |artist_builder| %>
+<fieldset>
+    <legend> Artist</legend>
+    <p>
+        <%= artist_builder.label :name %><br />
+        <%= artist_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+    </p>
+    <p>
+        <%= artist_builder.label :email %><br />
+        <%= artist_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+
+        <%= artist_builder.submit({:class => 'btn btn-primary'}) %>
+    </p>
+    <% end %>
+    <% end %>

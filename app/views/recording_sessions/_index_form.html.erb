@@ -18,10 +18,14 @@
 
         <% RecordingSession.incomplete.order('appointment_date ASC').each do |c| %>
         <div class="well">
+
+                <%= c.appointment_date.strftime("%I:%M%p") %>
+IS THIS WORKING???/
+
             <tbody>
                 <tr>
                     <td><%= link_to c.id, recording_session_path(c)%></td>
-                    <td><%= link_to c.appointment_date.time.to_formatted_s(:rfc822), recording_session_path(c)%>
+                    <td><%= link_to c.appointment_date.strftime("%I:%M%p"), recording_session_path(c)%>
                     </td>
                     <td><%= link_to c.engineer.name.capitalize, engineer_path(c.engineer) %></a></td>
                     <td><%= link_to c.artist.name, artist_path(c.artist)%></td>
@@ -32,6 +36,7 @@
                         <%= link_to "Delete", c, method: :delete, data: { confirm: 'Are you sure you want to delete this recording session?' } %>
                     </td>
                 </tr>
+
 
                 <% end %>
             </tbody>

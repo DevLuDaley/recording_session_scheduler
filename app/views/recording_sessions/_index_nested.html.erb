@@ -7,7 +7,8 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Session Date</th>
+                <th>Session</th>
+                <th>Duration</th>
                 <th>Engineer</th>
                 <th>Artist</th>
                 <th>Studio</th>
@@ -17,13 +18,13 @@
                 <th colspan="3"></th>
             </tr>
         </thead>
-
         <% @recording_sessions.incomplete.order('appointment_date ASC').each do |c| %>
         <div class="well">
             <tbody>
                 <tr>
                     <td><%= link_to c.id, recording_session_path(c)%></td>
-                    <td><%= link_to c.appointment_date.time.to_formatted_s(:rfc822), recording_session_path(c)%></td>
+                    <td><%= link_to c.appointment_date.strftime("%A %B%eth %Y at%l:%M %P"), recording_session_path(c)%></td>
+                    <td><%= link_to c.duration, recording_session_path(c)%></td>
                     <td><%= link_to c.engineer.name.capitalize, engineer_path(c.engineer) %></a></td>
                     <td><%= link_to c.artist.name, artist_path(c.artist)%></td>
                     <td><%= link_to c.studio.name.capitalize, studio_path(c.studio)%></td>

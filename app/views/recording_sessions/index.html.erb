@@ -1,10 +1,5 @@
-<br>
-<br>
-<br>
-<br>
 
 <!-- USED in views/RecordingSessions/index -->
-
 <!-- EDIT FORM -->
 <!-- DISPLAY recording_session.ALL -->
 <section class="main">
@@ -12,21 +7,15 @@
     <% if RecordingSession.all.blank? %>
     <h2>There are currently no recording sessions scheduled.</h2>
 
-    <%elsif @recording_sessions %>
+    <!-- <%elsif @recording_sessions == nil %> -->
+    <!-- render /recording_sessions index form -->
+    <!-- <%= render 'index_form', form: @recording_session %> -->
+    <!-- <p>"NOT NESTED"</p> -->
+    <% else %>
     <!-- render nested index form i.e   -->
     <%= render 'index_nested', form: @recording_session %>
+<BR>
 
-
-    <p> "hi" </p>
-
-    <% else %>
-    <!-- render /recording_sessions index form -->
-    <%= render 'index_form', form: @recording_session %>
-
-
-
-        <%= link_to "LINK to ALL SESSIONS via (index_partial) ", recording_sessions_path(@recording_session), :class => 'btn btn-default' %>
-        </div>
-        <p> <% end %> </p>
-
-        <!-- END OF EDIT FORM -->
+<%= link_to "LINK to ALL SESSIONS via (index_partial) ", recording_sessions_path(@recording_session), :class => 'btn btn-default' %>
+<p> <% end %> </p>
+       <!-- END OF INDEX FORM -->

@@ -1,34 +1,24 @@
 <!-- NEW FORM -->
 <%= form_for @artist, url: {action: "create"} do |p| %>
 
-<h2>Create a New Artist</h2>
-<br>
+<h2>Create Artist</h2>
 <%= render 'errors', from: @artist %>
+<h4>
+<%= form_for [@artist] do |artist_builder| %>
+        <fieldset>
+        <legend> Artist</legend>
+<p>
+            <%= artist_builder.label :name %><br />
+            <%= artist_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+</p>
+<p>
+            <%= artist_builder.label :email %><br />
+            <%= artist_builder.text_field :name, autofocus: true, autocomplete: "name" %>
 
-<%= form_for [@artist] do |p| %>
-        <div class="field">
-            <%= p.label :name %><br />
-            <%= p.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
-
-        <%= p.submit({:class => 'btn btn-primary'}) %>
+            <%= artist_builder.submit({:class => 'btn btn-primary'}) %>
+</p>
         <% end %>
         <% end %>
+
         </h4>
         <!-- END OF NEW FORM -->
-artist
-        <%= form_for @artist do |f| %>
-        <br />
-        <% if @artist.recording_sessions.present? %>
-        <%= f.fields_for :recording_sessions do |p| %>
-        <% user = p.object.user %>
-        <%= user.name %>
-        Admin?
-        <%= p.check_box :admin %>
-        <br />
-        <% end %>
-        <% else %>
-        No artists in this group yet
-        <% end %>
-        <%= f.submit 'Update group' %>
-        <% end %>
