@@ -3,6 +3,8 @@ class RecordingSession < ApplicationRecord
   belongs_to :engineer
   belongs_to :artist
   belongs_to :studio
+  accepts_nested_attributes_for :artist
+
 
 #scope :by_status, -> status  { where(status: status) if status.present? }
 #scope :recent, -> { order("recording_sessions.updated_at DESC") }
@@ -55,6 +57,11 @@ STATUS = {
 def self.recent
     order("recording_sessions.updated_at DESC")
   end
+
+
+def artist_name=(name)
+self.artist = Artist.find_by(name: name)
+end
 
 #def self.incomplete
  #   where(complete: false)
