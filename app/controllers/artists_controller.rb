@@ -27,7 +27,8 @@ class ArtistsController < ApplicationController
         redirect_to @artist # , notice: 'Artist created'
       else
         # @studios = Studio.all
-        render action: 'new'
+        #render action: 'new'
+        render :new
       end
   end
 
