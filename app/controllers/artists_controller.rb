@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
     # before_filter :authenticate_user!
     before_action :authenticate_user!
-
+   
   def index
     @artists = Artist.all
     @recording_sessions = RecordingSession.all
@@ -12,6 +12,7 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
+#    2.times {@artist.recording_sessions.build}
   end
 
 
@@ -42,7 +43,7 @@ def update
     #binding.pry
     @artist = Artist.find(params[:id])
     # raise params.inspect
-    if @artist.update(params.require(:artist).permit(:name))
+    if @artist.update(params.require(:artist).permit(:name, :email))
       # binding.pry
       redirect_to artist_path(@artist)
 
@@ -61,9 +62,13 @@ def show
     
   end
 
+
+
+
+
 private
   def artist_params
-    params.require(:artist).permit(:name)
+    params.require(:artist).permit(:name, :email, recording_session_ids:[], recording_session_attributes: [:artist_id, :engineer_id, :studio_id, :appointment_date])
   end
 
 

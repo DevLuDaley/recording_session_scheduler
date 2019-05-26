@@ -1,0 +1,37 @@
+<!-- NEW FORM -->
+<%= form_for @artist, url: {action: "create"} do |p| %>
+
+<h2>Create Artist</h2>
+<%= render 'errors', from: @artist %>
+<h4>
+<%= form_for [@artist] do |artist_builder| %>
+        <fieldset>
+        <legend> Artist</legend>
+<p>
+            <%= artist_builder.label :name %><br />
+            <%= artist_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+</p>
+<p>
+            <%= artist_builder.label :email %><br />
+            <%= artist_builder.text_field :email, autofocus: true, autocomplete: "email" %>
+
+            <%= artist_builder.submit({:class => 'btn btn-primary'}) %>
+
+
+
+        </p>
+        <% end %>
+        <% end %>
+
+        </h4>
+        <!-- END OF NEW FORM -->
+
+        <%= form_for @artist do |f| %>
+        <%= f.label "Name" %>
+        <%= f.text_field :name %>
+        <%= f.fields_for :recording_sessions, @artist.recording_sessions.build do |recording_session_fields| %>
+        <%= recording_session_fields.datetime_field :appointment_date %>
+        <%= recording_session_fields.text_field :studio_id %>
+        <% end %>
+        <%= f.submit %>
+        <% end %>

@@ -2,7 +2,10 @@ class RecordingSessionsController < ApplicationController
     #before_filter :authenticate_user!
     before_action :authenticate_user!
 #http_basic_authenticate_with name: "lu", password: "password", except: [:index, :show]
-
+class Project < ActiveRecord::Base
+  belongs_to :artist, :class_name => 'Artist'
+  accepts_nested_attributes_for :artist, :reject_if => :all_blank
+end
 
   def index
      @recording_sessions = RecordingSession.all
