@@ -1,25 +1,24 @@
 <!-- NEW FORM -->
-<%= form_for @artist, url: {action: "create"} do |f| %>
+<%= form_for @artist, url: {action: "create"} do |p| %>
 
-<!-- END OF NEW FORM -->
+<h2>Create Artist</h2>
+<%= render 'errors', from: @artist %>
+<h4>
+<%= form_for [@artist] do |artist_builder| %>
+        <fieldset>
+        <legend> Artist</legend>
+<p>
+            <%= artist_builder.label :name %><br />
+            <%= artist_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+</p>
+<p>
+            <%= artist_builder.label :email %><br />
+            <%= artist_builder.text_field :email, autofocus: true, autocomplete: "email" %>
 
-<%= f.label "Name" %>
-<%= f.text_field :name %>
-<br>
-<br>
-<%= f.fields_for :studios, @artist.studios.build do |studio_fields| %>
-<%= studio_fields.text_field :name %>
-<%= studio_fields.text_field :location %>
-<br>
-<br>
-<br>
-<%= f.fields_for :engineers, @artist.engineers.build do |engineer_fields| %>
-<%= engineer_fields.text_field :name %>
+            <%= artist_builder.submit({:class => 'btn btn-primary'}) %>
 
 
 
-<% end %>
-<% end %>
-<%= f.submit({:class => 'btn btn-primary'}) %>
-
-<% end %>
+        </p>
+        <% end %>
+        <% end %>

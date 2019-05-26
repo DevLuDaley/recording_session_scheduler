@@ -1,0 +1,25 @@
+<!-- NEW FORM -->
+<%= form_for @artist, url: {action: "create"} do |f| %>
+
+<!-- END OF NEW FORM -->
+
+<%= f.label "Name" %>
+<%= f.text_field :name %>
+<br>
+<br>
+<%= f.fields_for :studios, @artist.studios.build do |studio_fields| %>
+<%= studio_fields.text_field :name %>
+<%= studio_fields.text_field :location %>
+<br>
+<br>
+<br>
+<%= f.fields_for :engineers, @artist.engineers.build do |engineer_fields| %>
+<%= engineer_fields.text_field :name %>
+
+
+
+<% end %>
+<% end %>
+<%= f.submit({:class => 'btn btn-primary'}) %>
+
+<% end %>

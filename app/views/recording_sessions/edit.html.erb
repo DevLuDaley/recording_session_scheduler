@@ -25,6 +25,9 @@
         <%= p.datetime_field(:appointment_date, {:class => 'form-control'}) %>
         <br>
         <br>
+        <%= p.text_field(:status, {:class => 'form-control'}) %>
+        <br>
+        <br>
 
         <label>Studio Location:</label><br>
         <%= select("recording_session", "studio_id", @studios.collect {|p| [ p.name, p.location, p.id] }, {prompt: 'Book Studio'}) %>

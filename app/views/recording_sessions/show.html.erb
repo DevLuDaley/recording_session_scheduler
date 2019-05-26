@@ -1,33 +1,47 @@
-<body>
-
     <!-- RECORDING SESSION INFO -->
     <div>
         <h2> Scheduled Session </h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Recording Session</th>
+            <th>Engineer </th>
+            <th>Studio</th>
+            <th>Location</th>
+            <th>Artist</th>
+            <th>Complete</th>
+            <th>Cancel</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-        Session ID: <%= @recording_session.id %>
-        <br>
-        Session Date: <%= @recording_session.appointment_date.strftime("%A %B %eth %Y at%l:%M %P") %>
-<br>
-        Engineer: <%= @recording_session.engineer.name %>
-        <br>
-        Studio: <%= @recording_session.studio.name %>
-        <br>
-        Location: <%= @recording_session.studio.location %>
-        <br>
-        Artist: <%= @recording_session.artist.name %>
-        <br>
-        Recording Session Complete? <%= @recording_session.status %>
-        <br>
-        <br>
-    </div>
+        <th> <%= @recording_session.id %></th>
+        <th> <%= link_to @recording_session.appointment_date.strftime("%A %B %eth %Y at%l:%M %P"), recording_session_path(@recording_session) %> </th>
+        <th> <%= link_to @recording_session.engineer.name, engineer_path(@recording_session.engineer_id) %> </th>
+        <th> <%= link_to @recording_session.studio.name, studio_path(@recording_session.studio_id) %> </th>
+        <th> <%= link_to @recording_session.studio.location, studio_path(@recording_session.studio_id) %> </th>
+        <th> <%= link_to @recording_session.artist.name, artist_path(@recording_session.artist_id) %> </th>
+        <th> <%= @recording_session.status%></th>
 
-    <div>
-</body>
+        <th><button><%= link_to "Edit", edit_recording_session_path(@recording_session), :class => 'btn btn-default' %></button></th>
+        <p>
+        <th><button><%= link_to "Delete", recording_session_path(@recording_session), 
+                method: :delete, data: {confirm: 'Are you sure you want to delete this session?'} , :class => 'btn btn-default'%>
+        </button> </th>
+    </body>
 
-<button><%= link_to "Edit", edit_recording_session_path(@recording_session), :class => 'btn btn-default' %></button>
-<button><%= link_to "Delete", recording_session_path(@recording_session), 
-                        method: :delete, 
-                        data: {confirm: 'Are you sure you want to delete this session?'} , :class => 'btn btn-default'%>
-</button>
+    <table>
 
 </div>
+<br>
+    <br>
+<h5>    Create Below: </h5> 
+
+     <%= link_to 'New Session', new_recording_session_path %> |  <%= link_to 'New Artist', new_artist_path %> |
+     <%= link_to 'New Studio', new_studio_path %> |
+  <%= link_to 'New Engineer', new_engineer_path %> 
+</p>
+    </td>
+
+

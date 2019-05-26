@@ -23,7 +23,7 @@
             <tbody>
                 <tr>
                     <td><%= link_to c.id, recording_session_path(c)%></td>
-                    <td><%= link_to c.appointment_date.strftime("%A %B %eth %Y at%l:%M %P") %></td>
+                    <td><%= link_to c.appointment_date.strftime("%A %B %eth %Y at%l:%M %P"), recording_session_path(c) %></td>
                     <td><%= link_to c.duration, recording_session_path(c)%></td>
                     <td><%= link_to c.engineer.name.capitalize, engineer_path(c.engineer) %></a></td>
                     <td><%= link_to c.artist.name, artist_path(c.artist)%></td>
