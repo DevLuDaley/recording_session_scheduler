@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+h1, { margin-top:15%; }
+
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ #index {
+     box-sizing: border-box;
+     width: auto;
+     margin: auto;
+     max-width: 1020px;
+     padding: 250px 32px;
+ }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+
+h1, {
+  color: blue;
+}
+h2 {
+  color: green;
+}
+
+id:zats {
+  color: red;
+}
+
+article ol {
+  color: red;
+}
+
+h3 + p {
+  color: blue;
+}
+
+* {
+  color: rgb(8, 80, 139);
+}
+
+
+input[type="text"] {
+  width: 5500px;
+}
+
+a:link {
+  color: blue;
+}
+ 
+a:visited {
+  color: purple;
+}
+
