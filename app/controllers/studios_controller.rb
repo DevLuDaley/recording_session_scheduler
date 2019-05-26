@@ -59,6 +59,13 @@ def update
       render 'edit'
     end
 end
+
+def destroy
+    Studio.find(params[:id]).destroy
+    redirect_to action: 'index'
+    #redirect_to recording_session_path
+  end
+
 #end
 private
   def studio_params
