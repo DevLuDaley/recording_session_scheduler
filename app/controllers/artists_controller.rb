@@ -64,6 +64,11 @@ def show
 
 
 
+  def destroy
+    Artist.find(params[:id]).destroy
+    redirect_to action: 'index'
+    #redirect_to recording_session_path
+  end
 
 
 private
