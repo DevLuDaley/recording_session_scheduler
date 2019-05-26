@@ -6,7 +6,8 @@
 
 <div>
     <h2> Engineer Information </h2>
-    <h3> Engineer: <%= @engineer.name.capitalize %></h3>
+    <h3> Engineer: <%= @engineer.name.capitalize %> <button><%= link_to 'Edit Engineer', edit_engineer_path %></button> </h3>
+    <br></h3>
     <% if @engineer.recording_sessions.blank? %>
     <h2>There are currently no recording sessions scheduled.</h2>
     <% else %>
@@ -44,7 +45,26 @@
 
                 <% end %>
                 <% end %>
-                <!-- END OF EDIT FORM -->
+                        </tbody>
+                        </table>
+                        
+                     <p></p>
+            
+            <!-- END OF EDIT FORM -->
 
 
-                <!-- END OF EDIT FORM -->
+
+
+
+
+
+
+
+            <!-- URL LINKS -->
+            
+            <br>
+            <p> <%= link_to 'Create New Engineer', new_engineer_path %> |
+                <%= link_to 'Create New Session', new_recording_session_path %> | <td><a
+                        href="/engineers/@engineer_id"><%= link_to "Delete Engineer", @engineer, method: :delete, data: { confirm: 'Are you sure you want to delete this this studio?' } %></a>
+                    </td>
+            </p>
