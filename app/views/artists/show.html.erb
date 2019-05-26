@@ -29,7 +29,7 @@
                 <tbody>
                     <tr>
                         <td><a href="/engineers/@engineer_id page/:id"><%= c.id %></a></td>
-                        <td><a href="/recording_sessions/:id/edit"><%= c.appointment_date.time.to_formatted_s(:rfc822) %></a></td>
+                        <td><a href="/recording_sessions/:id/edit"><%= c.appointment_date.strftime("%A %B %eth %Y at%l:%M %P") %></a></td>
                         <td><a href="/engineers/@engineer_id page/:id"><%= c.engineer.name.capitalize %></a></td>
 
                         <td><a href="/studios/@studios_path"><%= c.studio.name.capitalize %></a></td>
