@@ -10,21 +10,16 @@
     <% if @artists.blank? %>
     <h2>There are currently no artists.</h2>
     <% else %>
-    <h2>Current Artists</h1>
+    <h2>Current Artists</h2>
         <br>
 
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Engineer</th>
                     <th>Artist</th>
-                    <th>Studio</th>
-                    <th>Location</th>
-                    <th>Recording Session Date</th>
-                    <th>Complete</th>
                     <th>Cancel</th>
-                    <th colspan="3"></th>
+                    <th>Artist</th>
+                       <th colspan="3"></th>
                 </tr>
             </thead>
 
@@ -44,8 +39,18 @@
                     <% end %>
                 </tbody>
         </table>
-        <%= link_to "LINK to ALL SESSIONS via (index_partial) ", recording_sessions_path(@recording_session), :class => 'btn btn-default' %>
         </div>
         <p> <% end %> </p>
 
         <!-- END OF EDIT FORM -->
+
+<!-- URL LINKS -->
+<!-- URL LINKS -->
+
+<br>
+<p> <%= link_to 'Create New Artist', new_artist_path %> |
+    <%= link_to 'Create New Session', new_recording_session_path %> 
+</p>
+</td>
+
+<!-- END OF EDIT FORM -->
