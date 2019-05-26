@@ -3,19 +3,18 @@
 <%= form_for (@recording_session) do |p| %>
 
 <h2>Create a New Session</h2>
-<h4>Use the dropdown menus below:</h4>
 <fieldset>
-    <legend>New Session</legend>
-
-    <fieldset>
-        <legend>Date needs to be created</legend>
+    <legend>Session</legend>
 
         <h5> 
         <label>Session Date:</label><br>
-        <%= p.datetime_field(:appointment_date, {:class => 'form-control'}) %>
+        <%= p.datetime_field(:appointment_date, min: {:class => 'form-control'}) %>
         <br>
         <br>
-         <!--  -->
+    <input type="datetime-local" name="time" value="<%= Time.now.strftime('%Y-%m-%dT%H:%M') %>" />
+       
+       
+        <!--  -->
         
         <%= render 'rec_form_sessions', from: @recording_session %>
         <%= render 'tasks_sessions', from: @recording_session %>
@@ -24,20 +23,11 @@
 
     </fieldset>
     <fieldset>
-        <legend>New Session</legend>
+        <legend>Artist</legend>
         <p>
             <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {prompt: 'Select Artist'}) %>
             <br>
             <br>
-            <fieldset>
-                <legend>Create New</legend>
-                <fieldset>
-                    <legend>Artist</legend>
-    </fieldset>
-
-    </p>
-
-    <p>
 
         <fieldset>
             <legend>Engineer</legend>
@@ -59,7 +49,7 @@
         </p>
     </fieldset>
 </fieldset>
-
+<br>
 
 <%= p.submit({:class => 'btn btn-primary'}) %>
 <% end %>

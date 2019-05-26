@@ -108,7 +108,7 @@ end
     index
     @recording_session = RecordingSession.find(params[:id])
     # raise params.inspect
-    if @recording_session.update(params.require(:recording_session).permit(:appointment_date, :studio_id, :engineer_id, :artist_id))
+    if @recording_session.update(params.require(:recording_session).permit(:appointment_date, :studio_id, :engineer_id, :artist_id, :status))
       # binding.pry
       redirect_to recording_session_path(@recording_session)
 
