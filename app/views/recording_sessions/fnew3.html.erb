@@ -1,0 +1,114 @@
+<!-- NEW FORM -->
+<% render 'errors', form: @recording_session %>
+<%= form_for (@recording_session) do |recording_session_builder| %>
+<h2>Create a New Session</h2>
+<h4>Use the dropdown menus or create below:</h4>
+<fieldset>
+    <legend>New Session</legend>
+
+<fieldset>
+    <legend>Date needs to be created</legend>
+
+<!--  -->
+    <p>
+       <%= select("recording_session", "appointment_date", @recording_sessions.collect {|p| [ p.appointment_date] }, {prompt: 'Select Date and Time'}) %></>
+    </p>
+
+<%= render 'rec_form_sessions', from: @recording_session %>
+<%= render 'tasks_sessions', from: @recording_session %>
+
+    <p>
+
+        <%= recording_session_builder.fields_for :artists do |artist_builder| %>
+    </fieldset>
+    <fieldset>
+        <legend>New Session</legend>
+            <p>
+            <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {prompt: 'Select Artist'}) %>
+<br>
+<br>
+<fieldset>
+    <legend>Create New</legend>
+<fieldset>
+    <legend>Artist</legend>
+
+    <%= simple_form_for(@recording_session) do |form| %> 
+    <%= form.input :artist %>
+
+    <%= form.simple_fields_for(:artist) do |artist_form| %> 
+    <% artist = artist_form.object.name %>
+    <%= artist_form.input :name, as: :hidden %>
+    <%= artist_form.input :email, as: :hidden %>
+
+
+    <%= artist_form.simple_fields_for(:studio) do |studio_form| %>
+    <%= studio_form.input :name, label: "#{artist} Name" %> 
+    <%= studio_form.input :address, label: "#{artist} Address" %>
+
+    <% end %>
+    <% end %>
+    <%= form.submit "Submit" %>
+    <% end %>
+<br>
+<br>
+    <%= artist_builder.label :name %><br />
+    <%= artist_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+</p>
+<p>
+                <%= artist_builder.label :email %><br />
+                <%= artist_builder.text_field :name, autofocus: true, autocomplete: "email" %>
+            </p>
+        </fieldset>
+
+    </p>
+
+    <p>
+        <%= recording_session_builder.fields_for :engineers do |engineer_builder| %>
+
+        <fieldset>
+            <legend>Engineer</legend>
+
+            <p>
+                <%= select("recording_session", "engineer_id", @engineers.collect {|p| [ p.name, p.id] }, {prompt: 'Assign Engineer'}) %>
+                <br>
+                <br>
+                <%= engineer_builder.label :name %><br />
+                <%= engineer_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+            </p>
+    
+            <p>
+                <%= engineer_builder.label :email %><br />
+                <%= engineer_builder.text_field :name, autofocus: true, autocomplete: "email" %>
+            </p>
+        </fieldset>
+    
+    </p>
+
+
+<%= recording_session_builder.fields_for :studios do |studio_builder| %>
+
+<fieldset>
+    <legend>Studios</legend>
+        <p>
+            <%= select("recording_session", "studio_id", @studios.collect {|p| [ p.name, p.id] }, {prompt: 'Book Studio'}) %>
+<br>
+<br>
+            <%= studio_builder.label :name %><br />
+            <%= studio_builder.text_field :name, autofocus: true, autocomplete: "name" %>
+    </p>
+    
+    <p>
+        <%= studio_builder.label :location %><br />
+        <%= studio_builder.text_field :name, autofocus: true, autocomplete: "location" %>
+    </p>
+</p>
+</fieldset>
+</fieldset>
+        <% end %>
+        <% end %>
+        <% end %>
+        <%= recording_session_builder.submit({:class => 'btn btn-primary'}) %>
+        <% end %>
+        </h4>
+
+        <!-- END OF NEW FORM -->

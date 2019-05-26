@@ -6,7 +6,7 @@
 
         Session ID: <%= @recording_session.id %>
         <br>
-        Session Date: <%= @recording_session.appointment_date.time.to_formatted_s(:rfc822)  %>
+        Session Date: <%= @recording_session.appointment_date.strftime("%A %B %eth %Y at%l:%M %P") %>
 <br>
         Engineer: <%= @recording_session.engineer.name %>
         <br>
