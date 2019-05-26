@@ -34,8 +34,8 @@ end
 
   def show
     index
-    # binding.pry
     @recording_session = RecordingSession.find(params[:id])
+   # binding.pry
     #     redirect_to action: 'index'
     
   end
