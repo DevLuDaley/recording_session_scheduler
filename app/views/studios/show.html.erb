@@ -3,8 +3,10 @@
     <!-- RECORDING SESSION INFO -->
     <div>
         <h2> Studio Information </h2>
-        <h3> Studio: <%= @studio.name.capitalize %></h3>
+        <h3> Studio: <%= @studio.name.capitalize %> <button><%= link_to 'Edit Studio', edit_studio_path %></button> </h3>
         <h3> Location: <%= @studio.location.capitalize %></h3>
+        <br>
+        <br>
         <% if @studio.recording_sessions.blank? %>
         <h2>There are currently no recording sessions scheduled.</h2>
         <% else %>
@@ -16,6 +18,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Session Date</th>
+                        <th>Session Duration</th>
                         <th>Artist</th>
                         <th>Engineer</th>
                         <th>Complete</th>
@@ -27,11 +30,12 @@
                 <% @studio.recording_sessions.each do |c| %>
                 <tbody>
                     <tr>
-                        <td><a href="/engineers/@engineer_id page/:id"><%= c.id %></a></td>
-                        <td><a href="/recording_sessions/:id/edit"><%= c.appointment_date.time.to_formatted_s(:rfc822) %></a></td>
-                        <td><a href="/artists/:artist_id"><%= c.artist.name.capitalize %></a></td>
-                        <td><a href="/engineers/@engineer_id page/:id"><%= c.engineer.name.capitalize %></a></td>
-                        <td><a href="/recording_sessions/:id/edit"><%= c.status %></a></td>
+                        <td><%= link_to c.id, recording_session_path(c)%></td>
+                        <td><%= link_to c.appointment_date.strftime("%A %B %eth %Y at%l:%M %P"), recording_session_path(c)%></td>
+                        <td><%= link_to c.duration, recording_session_path(c)%></td>
+                        <td><%= link_to c.artist.name, artist_path(c.artist)%></td>
+                        <td><%= link_to c.engineer.name.capitalize, engineer_path(c.engineer) %></a></td>
+                                                <td><%= c.status %></td>
                         <td><a
                                 href="/recording_sessions/@engineer_id"><%= link_to "Delete", c, method: :delete, data: { confirm: 'Are you sure you want to delete this recording session?' } %></a>
                         </td>
@@ -44,3 +48,12 @@
             <p> <% end %> </p>
 
             <!-- END OF EDIT FORM -->
+
+                <!-- URL LINKS -->
+                
+                <br>
+                <p> <%= link_to 'Create New Studio', new_studio_path %> |
+                    <%= link_to 'Create New Session', new_recording_session_path %> | <td><a
+                            href="/artists/@artist_id"><%= link_to "Delete Studio", @artist, method: :delete, data: { confirm: 'Are you sure you want to delete this this studio?' } %></a>
+                        </p>
+                    </td></p>
