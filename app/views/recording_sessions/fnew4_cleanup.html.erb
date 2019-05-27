@@ -1,0 +1,56 @@
+<!-- NEW FORM -->
+<% render 'errors', form: @recording_session %>
+<%= form_for (@recording_session) do |p| %>
+
+<h2>Create a New Session</h2>
+<fieldset>
+    <legend>Session</legend>
+
+        <h5> 
+        <label>Session Date:</label
+        ><br>
+        <%= p.datetime_field(:appointment_date, {:class => 'form-control'}) %>
+        <br>
+        <br>
+    <input type="datetime-local" name="time" value="<%= Time.now.strftime('%Y-%m-%dT%H:%M') %>" />
+        <!--  -->
+        <%= render 'rec_form_sessions', from: @recording_session %>
+        <%= render 'tasks_sessions', from: @recording_session %>
+
+        <p>
+
+    </fieldset>
+    <fieldset>
+        <legend>Artist</legend>
+        <p>
+            <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {prompt: 'Select Artist'}) %>
+            <br>
+            <br>
+
+        <fieldset>
+            <legend>Engineer</legend>
+
+            <p>
+                <%= select("recording_session", "engineer_id", @engineers.collect {|p| [ p.name, p.id] }, {prompt: 'Assign Engineer'}) %>
+            </p>
+        </fieldset>
+    </p>
+
+    <fieldset>
+        <legend>Studios</legend>
+        <p>
+            <%= select("recording_session", "studio_id", @studios.collect {|p| [ p.name, p.id] }, {prompt: 'Book Studio'}) %>
+        </p>
+
+        <p>
+        </p>
+        </p>
+    </fieldset>
+</fieldset>
+<br>
+
+<%= p.submit({:class => 'btn btn-primary'}) %>
+<% end %>
+</h4>
+
+<!-- END OF NEW FORM -->
