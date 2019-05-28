@@ -1,4 +1,3 @@
-
 <section class="main">
     <% if RecordingSession.all.blank? %>
     <h2>There are currently no recording sessions scheduled.</h2>
@@ -12,14 +11,9 @@
     <%= render 'index_nested', form: @recording_session %>
 <BR>
 
+<%= link_to "LINK to ALL SESSIONS via (index_partial) ", recording_sessions_path(@recording_session), :class => 'btn btn-default' %>
 <p> <% end %> </p>
        <!-- END OF INDEX FORM -->
     <!-- USED in views/RecordingSessions/index -->
     <!-- EDIT FORM -->
     <!-- DISPLAY recording_session.ALL -->
-
-
-    <%= link_to 'Create New Session', new_recording_session_path %> |
-    <p> <%= link_to 'Create New Studio', new_studio_path %> |
-        <%= link_to 'Create New Artist', new_artist_path %> |
-        <%= link_to 'Create New Engineer', new_engineer_path %>
