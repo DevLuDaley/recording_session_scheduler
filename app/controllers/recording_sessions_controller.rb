@@ -8,11 +8,12 @@ class Project < ActiveRecord::Base
 end
 
   def index
-     @recording_sessions = RecordingSession.all
+    @recording_sessions = RecordingSession.all
+    #calling 'index'miltiple times because of select (@artists) method in recoriding_session_controller#new
     @engineers = Engineer.all
     @studios = Studio.all
     @artists = Artist.all
-    
+
     #binding.pry
     if params[:artist_id]
       @recording_sessions = Artist.find(params[:artist_id]).recording_sessions
@@ -41,20 +42,38 @@ end
   end
 
   def new
-    @recording_session = RecordingSession.new
+    index
+    #if params[:artist_id]
+          # redirect_to action: 'index'
+
+    #else
+  #    @recording_session.artist.id = Artist.find(params[:artist_id])
+    @recording_session = RecordingSession.new#(params[:id])
+    @artist = Artist.new(params[:id])
+
+      
+   # end
+    #@artist = Artist.find(params[:artist_id]
+    #RecordingSession.artists.build
+    #@recording_session.artist_name = params[:artist_created_name] unless params[:artist_created_name].empty
     # params.require(:recording_session).permit(:appointment_date, :studio_id, :engineer_id, :artist_id)
     # if artist_id or not -- that
     # if nested_--tind artist build --what is associated
-    index
   end
 
   def create
     # binding.pry
-    @recording_session = RecordingSession.new(recording_session_params)
     index
+#if params[:artist_id]
+             #redirect_to action: 'index'
+
+    #  @recording_session.artist_id = Artist.find(params[:artist_id])
+    @recording_session = RecordingSession.new(recording_session_params)
     # @recording_session = RecordingSession.find(params[:id])
-    if @recording_session.save
-      # raise params.inspect
+   # @recording_sessions = artist.recording_sessions.create(recording_sessions_params)
+   if @recording_session.save
+    # raise params.inspect
+ # end
 #      redirect_to action: 'index' # , notice: 'Recording Session created'
       redirect_to @recording_session # , notice: 'Recording Session created'
     else
@@ -145,11 +164,19 @@ end
   end
 #end
 
+def create_artist_from_name
+  self.artist_name = new_artist_name if not new_artist_name.blank?
+end
 private
 
 def recording_session_params
-  params.require(:recording_session).permit(:appointment_date, :studio_id, :engineer_id, :artist_id)
+  params.require(:recording_session).permit(:appointment_date, :studio_id, :engineer_id, :artist_id, :status)
 end
+
+# def artist_params
+#   params.require(:artist).permit(:artist_id, :name) #, :artist_created_name)
+# end
+
 
 
 
