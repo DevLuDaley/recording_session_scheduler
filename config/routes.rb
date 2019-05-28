@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :engineers do
     resources :recording_sessions#, :only => [:index, :show, :new, :edit]
   end
-  resources :artists do
+  resources :artists, shallow: true do 
     resources :recording_sessions#, :only => [:index, :show, :new, :edit]
   end
   
