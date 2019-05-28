@@ -27,29 +27,32 @@
         <br>
         <%= p.select :status, [['Complete', true], ['Incomplete', false]] %>
 
-
         <br>
         <br>
-        
 
         <label>Studio Location:</label><br>
         <%= select("recording_session", "studio_id", @studios.collect {|p| [ p.name, p.location, p.id] }, {prompt: 'Book Studio'}) %>
-     
+
         <br>
         <br>
+
         <label>Recording Engineer:</label><br>
         <%= select("recording_session", "engineer_id", @engineers.collect {|p| [ p.name, p.id] }, {prompt: 'Assign Engineer'}) %>
+
         <br>
         <br>
+
         <label>Recording Artist:</label><br>
         <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {prompt: 'Select Artist'} ) %>
         <br>
-<br>
-<br>
+        <br>
+        <br> 
+     
 
         <%= p.submit({:class => 'btn btn-primary'}) %>
         <% end %>
 
+        <br>
         <br>
         <br>
         <br>
@@ -60,3 +63,10 @@
         </button>
         </h4>
         <!-- END OF EDIT FORM -->
+
+
+
+            <p> <%= link_to 'Create New Studio', new_studio_path %> |
+                <%= link_to 'Create New Session', new_recording_session_path %> |
+                <%= link_to 'Create New Artist', new_artist_path %> |
+                <%= link_to 'Create New Engineer', new_engineer_path %> 
