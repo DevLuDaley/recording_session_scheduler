@@ -4,9 +4,28 @@
 
 
 
+recording sessions show page
+- 
+Create Below:
+New Session | New Artist | New Studio | New Engineer
 
 
 
+
+
+need to write a blog post
+   use the project readme (download it?)
+need to record a walk-through
+Add to calendar => study groups and sessions
+
+JS catch up
+:lesson
+
+
+:videos
+
+
+:miniprojects
 
 
 

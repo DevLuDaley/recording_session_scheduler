@@ -20,15 +20,6 @@
     <legend>Artist</legend>
 
     <p>
-        <%= p.fields_for :artists do |artist_builder| %>
-        <%= artist_builder.label :name %>
-        <%= artist_builder.text_field :name %>
-        <%= link_to "create new Artist", new_artist_path %>
-    </p>
-    <% end %>
-
-
-    <p>
         <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {prompt: 'Select Artist'}) %>
         <br>
         <br>

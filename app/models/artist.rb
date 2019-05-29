@@ -24,18 +24,18 @@ validates :name, uniqueness: true
   end
   
   
-  def engineers_attributes=(engineer_attributes)
-    engineer_attributes.values.each do |engineer_attribute|
-      engineer = Engineer.find_or_create_by(engineer_attribute)
-      self.engineers << engineer
-    end
-  end
+  # def engineers_attributes=(engineer_attributes)
+  #   engineer_attributes.values.each do |engineer_attribute|
+  #     engineer = Engineer.find_or_create_by(engineer_attribute)
+  #     self.engineers << engineer
+  #   end
+  # end
   
-  def studios_attributes=(studio_attributes)
-    studio_attributes.values.each do |studio_attribute|
-      studio = Studio.find_or_create_by(studio_attribute)
-      self.studio << studio
-    end
-  end
+  # def studios_attributes=(studio_attributes)
+  #   studio_attributes.values.each do |studio_attribute|
+  #     studio = Studio.find_or_create_by(studio_attribute)
+  #     self.studio << studio
+  #   end
+  # end
 
 end
