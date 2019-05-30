@@ -1,0 +1,49 @@
+<!-- USED in views/RecordingSessions/index -->
+
+<!-- EDIT FORM -->
+<!-- DISPLAY recording_session.ALL -->
+<section class="main">
+
+    <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+
+
+    <h2>Comments</h2>
+        <br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Artist</th>
+                    <th>Cancel</th>
+                    <th>Artist</th>
+                       <th colspan="3"></th>
+                </tr>
+            </thead>
+<% @comments.each do |c| %>
+<div class="well">
+    <tbody>
+        <tr>
+            <td><%= link_to c.id, comments_path(c)%></td>
+            <td><% end %></td>
+            
+        <tr>
+    </tbody>
+        </table>
+        </div>
+        <p>  </p>
+
+        <!-- END OF EDIT FORM -->
+
+<!-- URL LINKS -->
+<!-- URL LINKS -->
+
+<br>
+<p>
+    <%= link_to 'Create New Session', new_recording_session_path %> |
+    <%= link_to 'Create New Studio', new_studio_path %> |
+    <%= link_to 'Create New Artist', new_artist_path %> |
+    <%= link_to 'Create New Engineer', new_engineer_path %>
+</p>
+</td>
+
+<!-- END OF EDIT FORM -->
