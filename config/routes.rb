@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   #   resources :recording_sessions#, :only => [:index, :show, :new, :edit]
   # end
   resources :artists do #, #shallow: true do 
+    resources :comments#, :only => [:index, :show, :new, :edit]
+  end
+
+  
+  
+  resources :artists do #, #shallow: true do 
     resources :recording_sessions#, :only => [:index, :show, :new, :edit]
   end
 
