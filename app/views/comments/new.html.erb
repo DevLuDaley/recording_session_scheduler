@@ -1,0 +1,25 @@
+<!-- NEW FORM -->
+<%= form_for (@comment), url: {action: "create"} do |p| %>
+
+<h2>Create Comment</h2>
+<%= render 'errors', from: @comment %>
+<h4>
+
+    <fieldset>
+        <legend> Comment</legend>
+        <p>
+            <%= p.label :content %>
+        <br>
+            <%= p.text_field :content, autofocus: true, autocomplete: "content" %>
+        <br>
+            <!-- <%#p.label :artist_id %> -->
+        <br>
+            <!-- <%#p.input type="hidden" name="artist_id" value="<%=params[:artist_id]%>" -->
+        </p>
+            <%= p.submit({:class => 'btn btn-primary'}) %>
+
+        </p>
+        <% end %>
+        
+
+
