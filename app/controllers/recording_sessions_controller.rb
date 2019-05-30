@@ -66,15 +66,15 @@ class RecordingSessionsController < ApplicationController
     index
 #if params[:artist_id]
              #redirect_to action: 'index'
-
     #  @recording_session.artist_id = Artist.find(params[:artist_id])
     @recording_session = RecordingSession.new(recording_session_params)
         @artist = Artist.find(params[:artist_id])
 
     # @recording_session = RecordingSession.find(params[:id])
    # @recording_sessions = artist.recording_sessions.create(recording_sessions_params)
-
-  binding.pry
+@recording_session.artist_id = @artist.id
+#  binding.pry
+  #binding.pry
    if @recording_session.save
     # raise params.inspect
  # end
