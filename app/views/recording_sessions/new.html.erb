@@ -3,7 +3,7 @@
 <section class="main">
 
     <% if params[:artist_id] != nil %>
-    <%= render 'new_test', form: @recording_session %>
+    <%= render 'nested', form: @recording_session %>
     <% else %>
         <%= render 'new_default', form: @recording_session %>
     <BR>

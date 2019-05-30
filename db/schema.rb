@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_05_30_161219) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "artist_id"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_comments_on_artist_id"

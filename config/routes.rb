@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
  root 'recording_sessions#index'
  
-   resources  :studios, :recording_sessions, :engineers, :artists
+   resources  :studios, :recording_sessions, :engineers, :artists, :comments
 #resources :photos, :only => [:index, :show]
   # resources :studios do
   #   resources :recording_sessions#, :only => [:create, :show]
@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     resources :comments#, :only => [:index, :show, :new, :edit]
   end
 
-  
   
   resources :artists do #, #shallow: true do 
     resources :recording_sessions#, :only => [:index, :show, :new, :edit]
