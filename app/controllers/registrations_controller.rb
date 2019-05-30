@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-before_action :authenticate_user!
+#before_action :authenticate_user!
     private
     def signup_params
         params.require(:engineer).permit( :name,

@@ -2,10 +2,10 @@ class RecordingSessionsController < ApplicationController
     #before_filter :authenticate_user!
     before_action :authenticate_user!
 #http_basic_authenticate_with name: "lu", password: "password", except: [:index, :show]
-class Project < ActiveRecord::Base
-  belongs_to :artist, :class_name => 'Artist'
-  accepts_nested_attributes_for :artist, :reject_if => :all_blank
-end
+#class Project < ActiveRecord::Base
+ # belongs_to :artist, :class_name => 'Artist'
+ # accepts_nested_attributes_for :artist, :reject_if => :all_blank
+#end
 
   def index
     @recording_sessions = RecordingSession.all
@@ -62,15 +62,19 @@ end
   end
 
   def create
-    # binding.pry
+#     binding.pry
     index
 #if params[:artist_id]
              #redirect_to action: 'index'
 
     #  @recording_session.artist_id = Artist.find(params[:artist_id])
     @recording_session = RecordingSession.new(recording_session_params)
+        @artist = Artist.find(params[:artist_id])
+
     # @recording_session = RecordingSession.find(params[:id])
    # @recording_sessions = artist.recording_sessions.create(recording_sessions_params)
+
+  binding.pry
    if @recording_session.save
     # raise params.inspect
  # end

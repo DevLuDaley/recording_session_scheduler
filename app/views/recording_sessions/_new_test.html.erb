@@ -1,4 +1,4 @@
-LU DALEY IS THE MAN - LOOK AT HIM GO
+
 <%= simple_form_for (@recording_session) do |p| %>
 
 <h2>Create a New Session</h2>
@@ -18,14 +18,9 @@ LU DALEY IS THE MAN - LOOK AT HIM GO
 
 </fieldset>
 <fieldset>
-    <legend>Artist</legend>
-
-    <p>
-        <%= select("recording_session", "artist_id", @artists.collect {|p| [ p.name, p.id] }, {:selected => params[:artist_id]}) %>
-        <br>
-        <br>
-
-
+    <!-- <legend>Artist</legend> -->
+ <p>
+        <input type="hidden" name="artist_id" value="<%=params[:artist_id]%>"
         <fieldset>
             <legend>Engineer</legend>
 
