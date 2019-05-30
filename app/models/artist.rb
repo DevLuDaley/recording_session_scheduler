@@ -1,13 +1,15 @@
 class Artist < ApplicationRecord
 
+    has_many :comments #, inverse_of: :recording_sessions
     has_many :recording_sessions #, inverse_of: :recording_sessions
     
     #adds methods to my model
     has_many :engineers, through: :recording_sessions
     has_many :studios, through: :recording_sessions
+    accepts_nested_attributes_for :comments
     accepts_nested_attributes_for :recording_sessions
-    accepts_nested_attributes_for :engineers
-    accepts_nested_attributes_for :studios
+#    accepts_nested_attributes_for :engineers
+ #   accepts_nested_attributes_for :studios
 
 validates :name, presence: true, length: { minimum: 1 }
 validates :name, uniqueness: true
