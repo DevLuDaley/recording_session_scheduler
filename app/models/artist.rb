@@ -2,7 +2,7 @@ class Artist < ApplicationRecord
 
     has_many :comments #, inverse_of: :recording_sessions
     has_many :recording_sessions #, inverse_of: :recording_sessions
-    
+
     #adds methods to my model
     has_many :engineers, through: :recording_sessions
     has_many :studios, through: :recording_sessions
@@ -25,7 +25,17 @@ validates :name, uniqueness: true
     end
   end
   
-  
+
+  def self.search(search)
+      if search
+#        find(:all, :conditions =>['name LIKE ?', "%#{search}%"])
+        where('name LIKE ?', "%#{search}%")
+      else
+        find(:all)
+      end
+  end
+
+
   # def engineers_attributes=(engineer_attributes)
   #   engineer_attributes.values.each do |engineer_attribute|
   #     engineer = Engineer.find_or_create_by(engineer_attribute)

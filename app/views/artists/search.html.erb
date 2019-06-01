@@ -1,0 +1,10 @@
+
+
+    <!-- RECORDING SESSION INFO -->
+   <h1>search page</h1>
+        <%= form_tag("/artists/filtered", method: "post") do %>
+        <%= label_tag(:q, "Enter an Artist's Name:") %>
+        <%= search_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+        <% end %>
+                    <!-- END OF EDIT FORM -->

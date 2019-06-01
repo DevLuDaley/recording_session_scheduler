@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
  root 'recording_sessions#index'
+ get '/artists/search' => 'artists#search'#, :as => "artists_search"
+ post '/artists/filtered' => 'artists#filtered'#, :as => "artists_search"
  
+
    resources  :studios, :recording_sessions, :engineers, :artists, :comments
 #resources :photos, :only => [:index, :show]
   # resources :studios do
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
     resources :recording_sessions#, :only => [:index, :show, :new, :edit]
   end
 
+  #get 'comments', to: 'comments#index', as
 
 #   devise_scope :users do
 #     get 'login', to: 'devise/sessions#new'
