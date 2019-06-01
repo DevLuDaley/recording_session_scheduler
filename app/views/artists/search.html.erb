@@ -1,10 +1,18 @@
 
 
     <!-- RECORDING SESSION INFO -->
-   <h1>search page</h1>
+   <h1> Artist Search</h1>
         <%= form_tag("/artists/filtered", method: "post") do %>
         <%= label_tag(:q, "Enter an Artist's Name:") %>
         <%= search_field_tag(:q) %>
         <%= submit_tag("Search") %>
         <% end %>
+
+<br>
+        <p>
+            <%= link_to 'New Session', new_recording_session_path %> |
+            <%= link_to 'Create New Studio', new_studio_path %> |
+            <%= link_to 'Create New Artist', new_artist_path %> |
+            <%= link_to 'Create New Engineer', new_engineer_path %>
+        </p>
                     <!-- END OF EDIT FORM -->
