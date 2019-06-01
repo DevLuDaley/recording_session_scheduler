@@ -68,21 +68,25 @@ class RecordingSessionsController < ApplicationController
              #redirect_to action: 'index'
     #  @recording_session.artist_id = Artist.find(params[:artist_id])
     @recording_session = RecordingSession.new(recording_session_params)
-        @artist = Artist.find(params[:artist_id])
-
+    if params[:artist_id] != nil
+      @artist = Artist.find(params[:artist_id])
+      @recording_session.artist_id = @artist.id
+      #binding.pry
+    else
     # @recording_session = RecordingSession.find(params[:id])
    # @recording_sessions = artist.recording_sessions.create(recording_sessions_params)
-@recording_session.artist_id = @artist.id
 #  binding.pry
   #binding.pry
+   end
    if @recording_session.save
     # raise params.inspect
- # end
 #      redirect_to action: 'index' # , notice: 'Recording Session created'
-      redirect_to @recording_session # , notice: 'Recording Session created'
+      redirect_to @recording_session
+      flash.notice = "Recording Session created for #{@artist.name.capitalize}"
     else
       # @studios = Studio.all
       render action: 'new'
+      flash.alert = "Sorry we couldn't create session for you."
     end
   end
 
