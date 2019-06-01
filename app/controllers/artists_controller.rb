@@ -70,11 +70,26 @@ def show
     #redirect_to recording_session_path
   end
 
-
-private
-  def artist_params
-    params.require(:artist).permit(:name, :email, recording_session_ids:[], recording_session_attributes: [:artist_id, :engineer_id, :studio_id, :appointment_date])
+  def search
+    #binding.pry
+#    redirect_to 'artists/filtered'
   end
+
+  def filtered
+    if Artist.search(params[:q]).exists?
+     flash.notice = "Great Job! Here are the results from your '#{params[:q]}' search."
+       # redirect_to 'artists/filtered'
+    else
+       flash.alert = "Who the heck is '#{params[:q]}'??? Who's mans is this?"
+      end
+  end
+
+
+
+  private
+    def artist_params
+      params.require(:artist).permit(:name, :email, recording_session_ids:[], recording_session_attributes: [:artist_id, :engineer_id, :studio_id, :appointment_date])
+    end
 
 
 end
