@@ -72,15 +72,16 @@ def show
 
   def search
     #binding.pry
-#    redirect_to 'artists/filtered'
+#    redirect_to 'artists/search_results'
 #flash[:notice] = nil
 #flash[:alert] = nil 
 end
 
-  def filtered
+  def search_results
+    index
     if Artist.search(params[:q]).exists?
      flash.now[:notice] = "Great Job! Here are the results from your '#{params[:q]}' search."
-       # redirect_to 'artists/filtered'
+       # redirect_to 'artists/search_results'
        #flash[:notice] = nil
     else
 

@@ -2,7 +2,7 @@
 
     <!-- RECORDING SESSION INFO -->
    <h1> Artist Search</h1>
-        <%= form_tag("/artists/filtered", method: "post") do %>
+        <%= form_tag("/artists/search_results", method: "post") do %>
         <%= label_tag(:q, "Enter an Artist's Name:") %>
         <%= search_field_tag(:q) %>
         <%= submit_tag("Search") %>

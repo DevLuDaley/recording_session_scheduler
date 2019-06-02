@@ -3,10 +3,10 @@
 
 
 
-    <!-- RECORDING SESSION INFO -->
+    <!-- Search results INFO -->
    <h1>search results page</h1>
    <button> <%= link_to 'back', artists_search_path%> </button>
-    <p><% Artist.all.search(params[:q]).each do |j| %></p>
+    <p><% @artists.search(params[:q]).each do |j| %></p>
     <p><%= link_to "#{j.name.capitalize} show page", artist_path(j.id) %></p>
     <p><% end %></p>
 

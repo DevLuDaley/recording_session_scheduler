@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
  root 'recording_sessions#index'
  get '/artists/search' => 'artists#search', :as => "artists_search"
- post '/artists/filtered' => 'artists#filtered', :as => "artists_filtered"
- get '/artists/filtered' => 'artists#filtered'
+ post '/artists/search_results' => 'artists#search_results', :as => "artists_search_results"
+ get '/artists/search_results' => 'artists#search_results'
  
 
    resources  :studios, :recording_sessions, :engineers, :artists, :comments
