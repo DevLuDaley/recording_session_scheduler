@@ -67,6 +67,8 @@ class RecordingSessionsController < ApplicationController
 #if params[:artist_id]
              #redirect_to action: 'index'
     #  @recording_session.artist_id = Artist.find(params[:artist_id])
+    @recording_sessions_incomplete_by_date = RecordingSession.incomplete.order('appointment_date ASC')
+
     @recording_session = RecordingSession.new(recording_session_params)
     if params[:artist_id] != nil
       @artist = Artist.find(params[:artist_id])

@@ -16,7 +16,7 @@
             </tr>
         </thead>
 
-        <% RecordingSession.incomplete.order('appointment_date ASC').each do |c| %>
+        <% @recording_sessions_incomplete_by_date.each do |c| %>
         <div class="well">
 
                 <%= c.appointment_date.strftime("%I:%M%p") %>
