@@ -67,7 +67,7 @@ class RecordingSessionsController < ApplicationController
       @artist = Artist.find(params[:artist_id])
       @recording_session.artist_id = @artist.id
       #binding.pry
-    else
+    #else
     # @recording_session = RecordingSession.find(params[:id])
    # @recording_sessions = artist.recording_sessions.create(recording_sessions_params)
 #  binding.pry
@@ -133,6 +133,11 @@ class RecordingSessionsController < ApplicationController
 #def create_artist_from_name
  # self.artist_name = new_artist_name if not new_artist_name.blank?
 #end
+
+
+def past_sessions
+  @recording_sessions_past_true = RecordingSession.all.past_true
+end
 
 private
 def recording_session_params

@@ -63,10 +63,15 @@ def artist_name=(name)
 self.artist = Artist.find_by(name: name)
 end
 
+
 #def self.incomplete
  #   where(complete: false)
     
 #end
+
+def self.past_true
+   where(status: true)
+end
 
 
 end

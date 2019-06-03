@@ -4,30 +4,20 @@ Rails.application.routes.draw do
 
  root 'recording_sessions#index'
 
+get "/past_sessions" => 'recording_sessions#past_sessions'
+# controller
+    # scope
+    # view
+
+
+
    resources  :studios, :recording_sessions, :engineers, :artists, :comments
-#resources :photos, :only => [:index, :show]
-  # resources :studios do
-  #   resources :recording_sessions#, :only => [:create, :show]
-  # end
-  # resources :engineers do
-  #   resources :recording_sessions#, :only => [:index, :show, :new, :edit]
-  # end
   resources :artists do #, #shallow: true do 
     resources :comments#, :only => [:index, :show, :new, :edit]
   end
 
-  
   resources :artists do #, #shallow: true do 
     resources :recording_sessions#, :only => [:index, :show, :new, :edit]
-  end
-
-  #get 'comments', to: 'comments#index', as
-
-#   devise_scope :users do
-#     get 'login', to: 'devise/sessions#new'
-#   end
-#  devise_scope :users do
-#     get 'logout', to: 'devise/sessions#destroy'
-#   end
+    end
 
 end
