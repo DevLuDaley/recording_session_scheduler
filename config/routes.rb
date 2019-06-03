@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
  root 'recording_sessions#index'
- get '/artists/search' => 'artists#search', :as => "artists_search"
- post '/artists/search_results' => 'artists#search_results', :as => "artists_search_results"
- get '/artists/search_results' => 'artists#search_results'
- 
 
    resources  :studios, :recording_sessions, :engineers, :artists, :comments
 #resources :photos, :only => [:index, :show]

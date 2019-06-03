@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
     # before_filter :authenticate_user!
     before_action :authenticate_user!
-   
+
   def index
     @artists = Artist.all
     @recording_sessions = RecordingSession.all
@@ -68,26 +68,6 @@ def show
     Artist.find(params[:id]).destroy
     redirect_to action: 'index'
     #redirect_to recording_session_path
-  end
-
-  def search
-    #binding.pry
-#    redirect_to 'artists/search_results'
-#flash[:notice] = nil
-#flash[:alert] = nil 
-end
-
-  def search_results
-    index
-    if Artist.search(params[:q]).exists?
-     flash.now[:notice] = "Great Job! Here are the results from your '#{params[:q]}' search."
-       # redirect_to 'artists/search_results'
-       #flash[:notice] = nil
-    else
-
-      flash.now[:alert] = "Who the heck is '#{params[:q]}' ???"
-       #flash[:notice] = nil
-      end
   end
 
 
