@@ -16,11 +16,11 @@
             </tr>
         </thead>
 
-        <% @recording_sessions_incomplete_by_date.each do |c| %>
+        <% @recording_sessions_by_status_then_date.each do |c| %>
         <div class="well">
 
                 <%= c.appointment_date.strftime("%I:%M%p") %>
-IS THIS WORKING???/
+
 
             <tbody>
                 <tr>

@@ -18,7 +18,7 @@
                 <th colspan="3"></th>
             </tr>
         </thead>
-        <% @recording_sessions.incomplete.order('appointment_date ASC').each do |c| %>
+        <% @recording_sessions_by_status_then_date.each do |c| %>
         <div class="well">
             <tbody>
                 <tr>
