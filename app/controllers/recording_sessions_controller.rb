@@ -25,6 +25,10 @@ class RecordingSessionsController < ApplicationController
      
    #    redirect_to action: 'index'
          end
+         respond_to do |f|
+        f.html {render :index} 
+        f.json {render json: @recording_sessions}
+        end
   end 
 
 
