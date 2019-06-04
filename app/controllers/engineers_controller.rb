@@ -8,6 +8,10 @@ class EngineersController < ApplicationController
     @recording_sessions = RecordingSession.all
    # @engineers = Engineer.all
   #  @engineers = engineer.all
+           respond_to do |f|
+        f.html {render :index} 
+        f.json {render json: @engineers}
+        end
       end
 
 def show
