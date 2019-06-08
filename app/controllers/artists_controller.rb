@@ -14,12 +14,22 @@ class ArtistsController < ApplicationController
         end
   end
 
+def show
+    index
+    # binding.pry
+    @artist = Artist.find(params[:id])
+    #     redirect_to action: 'index'
+      respond_to do |f|
+        f.html {render :show} 
+        f.json {render json: @artist}
+      end
+  end
+
+
   def new
     @artist = Artist.new
 #    2.times {@artist.recording_sessions.build}
-        respond_to do |f|
-        f.html {render :index} 
-        f.json {render json: @artist}
+
   end
 
 
@@ -32,7 +42,12 @@ class ArtistsController < ApplicationController
       if @artist.save
         # raise params.inspect
   #      redirect_to action: 'index' # , notice: 'Artist created'
-        redirect_to @artist # , notice: 'Artist created'
+        #redirect_to @artist # , notice: 'Artist created'
+
+         respond_to do |f|
+        f.html {redirect_to artist_path} 
+        f.json {render json: @artist}
+      end
       else
         # @studios = Studio.all
         #render action: 'new'
@@ -61,13 +76,6 @@ end
 
 
 
-def show
-    index
-    # binding.pry
-    @artist = Artist.find(params[:id])
-    #     redirect_to action: 'index'
-    
-  end
 
 
 
