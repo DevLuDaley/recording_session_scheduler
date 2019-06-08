@@ -8,11 +8,18 @@ class ArtistsController < ApplicationController
     @engineers = Engineer.all
     @studios = Studio.all
     #@artists = Artist.all
+        respond_to do |f|
+        f.html {render :index} 
+        f.json {render json: @artists}
+        end
   end
 
   def new
     @artist = Artist.new
 #    2.times {@artist.recording_sessions.build}
+        respond_to do |f|
+        f.html {render :index} 
+        f.json {render json: @artist}
   end
 
 
