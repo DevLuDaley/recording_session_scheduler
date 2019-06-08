@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
     @studios = Studio.all
     @artists = Artist.all
 
+       respond_to do |f|
+        f.html {render :index} 
+        f.json {render json: @comments}
+        end
   end
 
 
@@ -18,6 +22,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
    # binding.pry
     #     redirect_to action: 'index'
+      #  respond_to do |f|
+      #   f.html {render :show} 
+      #   f.json {render json: @comment}
+        #end
   end
 
   def new
