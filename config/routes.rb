@@ -12,7 +12,8 @@ get "/past_sessions" => 'recording_sessions#past_sessions'
 
 
    resources  :studios, :recording_sessions, :engineers, :artists, :comments
-  resources :artists do #, #shallow: true do 
+   
+   resources :artists do #, #shallow: true do 
     resources :comments#, :only => [:index, :show, :new, :edit]
   end
 
