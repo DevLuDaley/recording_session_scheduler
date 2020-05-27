@@ -1,6 +1,6 @@
+<h2>
 
-
-<h2>Scheduled Sessions</h1>
+    Scheduled Sessions</h1>
     <br>
 
     <table>
@@ -19,22 +19,38 @@
             </tr>
         </thead>
         <% @recording_sessions.incomplete.order('appointment_date ASC').each do |c| %>
-        <div class="well">
-            <tbody>
-                <tr>
-                    <td><%= link_to c.id, recording_session_path(c)%></td>
-                    <td><%= link_to c.appointment_date.strftime("%A %B %eth %Y at%l:%M %P"), recording_session_path(c) %></td>
-                    <td><%= link_to c.duration, recording_session_path(c)%></td>
-                    <td><%= link_to c.engineer.name.capitalize, engineer_path(c.engineer) %></a></td>
-                    <td><%= link_to c.artist.name, artist_path(c.artist)%></td>
-                    <td><%= link_to c.studio.name.capitalize, studio_path(c.studio)%></td>
-                    <td><%= link_to c.studio.location.capitalize, studio_path(c.studio)%></td>
-                    <td><%= c.status %></td>
-                    <td>
-                        <%= link_to "Delete", c, method: :delete, data: { confirm: 'Are you sure you want to delete this recording session?' } %>
-                    </td>
-                </tr>
-
-                <% end %>
-            </tbody>
+            <div class="well">
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= link_to c.id, recording_session_path(c)%>
+                        </td>
+                        <td>
+                            <%= link_to c.appointment_date.strftime("%A %B %eth %Y at%l:%M %P"), recording_session_path(c) %>
+                        </td>
+                        <td>
+                            <%= link_to c.duration, recording_session_path(c)%>
+                        </td>
+                        <td>
+                            <%= link_to c.engineer.name.capitalize, engineer_path(c.engineer) %>
+                                </a>
+                        </td>
+                        <td>
+                            <%= link_to c.artist.name, artist_path(c.artist)%>
+                        </td>
+                        <td>
+                            <%= link_to c.studio.name.capitalize, studio_path(c.studio)%>
+                        </td>
+                        <td>
+                            <%= link_to c.studio.location.capitalize, studio_path(c.studio)%>
+                        </td>
+                        <td>
+                            <%= c.status %>
+                        </td>
+                        <td>
+                            <%= link_to "Delete", c, method: :delete, data: { confirm: 'Are you sure you want to delete this recording session?' } %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
     </table>
